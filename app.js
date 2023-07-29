@@ -61,7 +61,7 @@ passport.deserializeUser(function(id, done) {
 passport.use(new GoogleStrategy({
     clientID: process.env.CLIENT_ID,
     clientSecret: process.env.CLIENT_SECRET,
-    callbackURL: "http://localhost:3000/auth/google/secrets",
+    callbackURL: "http://localhost:3000/auth/google/blogs",
     userProfileURL: "https://www.googleapis.com/oauth2/v3/userinfo"
   },
   function(accessToken, refreshToken, profile, cb) {
@@ -81,11 +81,11 @@ app.get("/auth/google",
   passport.authenticate('google', { scope: ["profile"] })
 );
 
-app.get("/auth/google/secrets",
+app.get("/auth/google/blogs",
   passport.authenticate('google', { failureRedirect: "/login" }),
   function(req, res) {
-    // Successful authentication, redirect to secrets.
-    res.redirect("/secrets");
+    // Successful authentication, redirect to blogs.
+    res.redirect("/blogs");
   });
 
 app.get("/login", function(req, res){
@@ -102,7 +102,7 @@ app.get("/blogs", function(req, res){
       console.log(err);
     } else {
       if (foundUsers) {
-        res.render("blogs", {usersWithSecrets: foundUsers});
+        res.render("blogs", {usersWithblogs: foundUsers});
       }
     }
   });
@@ -138,7 +138,7 @@ app.post("/submit", function(req, res){
 //       if (foundUser) {
 //         foundUser.secret = submittedSecret;
 //         foundUser.save(function(){
-//           res.redirect("/secrets");
+//           res.redirect("/blogs");
 //         });
 //       }
 //     }
@@ -151,7 +151,7 @@ const post = new Post({
 
 post.save(function(err){
   if (!err){
-      res.redirect("/secrets");
+      res.redirect("/blogs");
   } else {
     res.redirect("/");
   }
@@ -183,7 +183,7 @@ app.post("/register", function(req, res){
       res.redirect("/register");
     } else {
       passport.authenticate("local")(req, res, function(){
-        res.redirect("/secrets");
+        res.redirect("/blogs");
       });
     }
   });
@@ -202,7 +202,7 @@ app.post("/login", function(req, res){
       console.log(err);
     } else {
       passport.authenticate("local")(req, res, function(){
-        res.redirect("/secrets");
+        res.redirect("/blogs");
       });
     }
   });
