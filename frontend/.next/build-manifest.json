@@ -12,20 +12,10 @@
   ],
   "rootMainFiles": [],
   "pages": {
-    "/": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/index.js"
-    ],
     "/Components/BlogPage": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
       "static/chunks/pages/Components/BlogPage.js"
-    ],
-    "/Components/Login": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/Components/Login.js"
     ],
     "/Components/Submit": [
       "static/chunks/webpack.js",

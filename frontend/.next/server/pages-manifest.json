@@ -2,8 +2,7 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/": "pages/index.js",
   "/Components/Login": "pages/Components/Login.js",
-  "/Components/BlogPage": "pages/Components/BlogPage.js",
-  "/Components/Submit": "pages/Components/Submit.js"
+  "/Components/Submit": "pages/Components/Submit.js",
+  "/Components/BlogPage": "pages/Components/BlogPage.js"
 }
