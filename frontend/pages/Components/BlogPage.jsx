@@ -7,16 +7,17 @@ function BlogPage(){
 
     const [blogPosts, setBlogPosts] = useState([]);
 
-  useEffect(() => {
-    axios.get("/api/getBlogPosts")
-      .then((res) => {
-        setBlogPosts(res.data);
-        console.log(res.data);
-      })
-      .catch((error) => {
-        console.error("Error fetching blog posts:", error);
+    useEffect(() => {
+      let x = async() => {
+      let res = await fetch("http://localhost:3001/api/getBlogPosts",{
+        method: "GET",
       });
-  }, []);
+      let data = await res.json();
+      setBlogPosts(data);
+      console.log(data);
+      }
+      x();
+    }, []);
   
 
 
@@ -24,11 +25,11 @@ function BlogPage(){
                
         <Link href="/Components/Submit"><button>Submit blogs</button></Link>
         {blogPosts.map((blogPost) => (
-  <Post
-    key={blogPost._id}
-    title={blogPost.title}
-    content={blogPost.content}
-  />
+          <Post
+            key={blogPost._id}
+            title={blogPost.title}
+            content={blogPost.content}
+          />
 ))}
 
     </div>);

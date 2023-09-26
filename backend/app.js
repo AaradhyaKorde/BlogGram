@@ -8,18 +8,8 @@ const cors = require('cors');
 
 
 const app = express();
+// app.use(cors(corsOptions));
 app.use(cors());
-const corsOptions = {
-  origin: 'http://localhost:3000/', // Replace with your allowed origin
-  methods: 'GET,POST',
-  optionsSuccessStatus: 200,
-};
-
-app.use(cors(corsOptions));
-
-// const path = require('path');
-// Serve static files from the "public" directory
-// app.use(express.static(path.join(__dirname, 'build')));
 
 app.use(bodyParser.json());
 

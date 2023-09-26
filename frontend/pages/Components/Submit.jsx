@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useRouter } from 'next/router'
 import Link from 'next/link';
 import axios from "axios";
 
@@ -41,12 +42,15 @@ function Submit(props){
           });;
     };
 
+    const router = useRouter()
+
     return(<div>
         <form action="" onSubmit={submitBlogPost}>
             <input name="title" onChange={handleBlogChange} value={blogPost.institute} placeholder="Title" />
             <input name="content" onChange={handleBlogChange} value={blogPost.university} placeholder="Content" />
+            <button type="submit" onClick={() => router.push('/Components/BlogPage')}>Add</button>
             {/* <Link href="/Components/BlogPage"><button  type="submit" >Add</button></Link> */}
-            <button  type="submit" >Add</button>
+            {/* <button  type="submit" >Add</button> */}
             
             </form>
     </div>);
